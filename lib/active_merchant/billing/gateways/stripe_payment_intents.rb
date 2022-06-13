@@ -501,7 +501,7 @@ module ActiveMerchant #:nodoc:
       def success_from(response, options)
         if response['status'] == 'requires_action' && !options[:execute_threed]
           response['error'] = {}
-          response['error']['message'] = 'Received unexpected 3DS authentication response. Use the execute_threed option to initiate a proper 3DS flow.'
+          response['error']['message'] = 'Required field to initiate the 3DS flow is missing. The missing field would be either attempt_3dsecure or execute_threed.'
           return false
         end
 

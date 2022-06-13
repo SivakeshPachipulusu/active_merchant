@@ -363,7 +363,7 @@ class RemoteAdyenTest < Test::Unit::TestCase
   def test_purchase_fails_on_unexpected_3ds_initiation
     response = @gateway.purchase(8484, @three_ds_enrolled_card, @options)
     assert_failure response
-    assert_match 'Received unexpected 3DS authentication response', response.message
+    assert_match 'Required field to initiate the 3DS flow is missing', response.message
   end
 
   def test_successful_purchase_with_auth_data_via_threeds1_standalone

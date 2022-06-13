@@ -616,7 +616,7 @@ module ActiveMerchant #:nodoc:
 
       def success_from(action, response, options)
         if %w[RedirectShopper ChallengeShopper].include?(response.dig('resultCode')) && !options[:execute_threed] && !options[:threed_dynamic]
-          response['refusalReason'] = 'Received unexpected 3DS authentication response. Use the execute_threed and/or threed_dynamic options to initiate a proper 3DS flow.'
+          response['refusalReason'] = 'Required field to initiate the 3DS flow is missing. The missing field would be one of the following: attempt_3dsecure, execute_threed, or threed_dynamic options.'
           return false
         end
         case action.to_s

@@ -715,7 +715,7 @@ class RemoteStripeIntentsTest < Test::Unit::TestCase
 
     assert response = @gateway.purchase(100, @three_ds_credit_card, options)
     assert_failure response
-    assert_match 'Received unexpected 3DS authentication response', response.message
+    assert_match 'Required field to initiate the 3DS flow is missing', response.message
   end
 
   def test_create_payment_intent_with_shipping_address
